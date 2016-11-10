@@ -12,20 +12,16 @@
 gint
 count_unread_mails ()
 {
-  gchar *cmdline;
   gchar *stdout;
   gint status;
 
-  cmdline = g_strdup ("mu find flag:unread");
-
-  if (g_spawn_command_line_sync (cmdline, &stdout, NULL, &status, NULL) &&
+  if (g_spawn_command_line_sync ("mu find flag:unread", &stdout, NULL, &status, NULL) &&
       status == 0)
     {
       gint count = 0;
       char *p = stdout;
       for (; *p != '\0'; p++)
         if (*p == '\n') count++;
-      g_free (cmdline);
       g_free (stdout);
       return count;
     }
