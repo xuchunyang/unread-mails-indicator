@@ -2,7 +2,7 @@
  * An indicator to display count of unread mails
  *
  * The command to find it:
- * $ mu find flag:attach | wc -l
+ * $ mu find flag:unread | wc -l
  *
  */
 
